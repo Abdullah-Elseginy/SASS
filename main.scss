@@ -1,0 +1,29 @@
+//import saas files
+@use "./SASS/Layout/Layout";
+@use "./SASS/Pages/contact";
+//import colors
+@use "./SASS/Assets/colors" as*;
+/* Use the variables */
+$bgcolor: lightblue;
+$textcolor: darkblue;
+$fontsize: 18px;
+$borderwidth:10px solid;
+
+body {
+  background-color: $bgcolor;
+  color: $textcolor;
+  font-size: $fontsize;
+  // border: 2px solid red;
+}
+.div1{
+  border: $borderwidth $main;
+}
+$maxWidth:767px;
+@media(max-width:$maxWidth){
+  .div1{
+    border: 2px dashed red;
+  }
+  .body{
+    background-color: $secondary;
+  }
+}

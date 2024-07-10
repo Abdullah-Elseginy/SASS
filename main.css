@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+
+.contact {
+  padding: 20px;
+}
+
+/* Use the variables */
+body {
+  background-color: lightblue;
+  color: darkblue;
+  font-size: 18px;
+}
+
+.div1 {
+  border: 10px solid #10875b;
+}
+
+@media (max-width: 767px) {
+  .div1 {
+    border: 2px dashed red;
+  }
+  body {
+    background-color: #785f54;
+  }
+}

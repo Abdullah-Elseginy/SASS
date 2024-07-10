@@ -1,0 +1,187 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+@mixin flexProp{
+    display: flex;
+    // align-items: center;
+}
+@mixin buttonStyle{
+    border: none;
+    background-color: rgb(162, 162, 162);
+    color: white;
+    padding: 10px 30px;
+    font-size: 20px;
+    font-weight: bold;
+}
+@mixin bottomMargin{
+    margin-bottom: 3%;
+}
+.upper{
+    @include bottomMargin();
+    .nav{
+        ul{
+            list-style: none;
+            @include flexProp();
+            justify-content: space-evenly;
+            li{
+                color: black;
+            }
+        }
+        padding: 1%;
+    }
+    .landscape{
+        padding: 20px;
+        text-align: center;
+        color: white;
+        background-color: black;
+        h5,h1,button{
+            @include bottomMargin()
+        }
+        button{
+            @include buttonStyle();
+        }
+    }
+    .body{
+        @include flexProp();
+        background-color: rgb(228, 227, 227);
+        flex-direction: column;
+        img{
+            width: 100%;
+        }
+        .left{
+            @extend img;
+            text-align: center;
+            padding: 10px;
+            h3,p,button{
+                @include bottomMargin()
+            }
+            button{
+                @include buttonStyle();
+                background-color: black;
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+// middle part
+@mixin middlePadding{
+    padding: 2vw;
+}
+.middle{
+    @include bottomMargin();
+    div:first-child,div:last-child{
+        @include middlePadding();
+        background-color: rgb(93, 93, 206);
+        font-size: 25px;
+        color: rgb(222, 222, 222);
+    }
+    div:nth-child(2){
+        @include middlePadding();
+        h2{
+            @include bottomMargin();
+        }
+    }
+}
+
+// down part
+@mixin borderColor($color){
+    background-color: $color;
+    border-bottom: 1px solid $color;
+}
+.down{
+    padding: 2%;
+    h2{
+        text-align: center;
+        @include bottomMargin();
+    }
+    .x{
+        @include flexProp();
+        flex-direction: column;
+        .left{
+            @include bottomMargin();
+            .title{
+                @include borderColor(lightsalmon);
+                color: white
+            }
+            div{
+                @include borderColor(lightsalmon);
+                background-color: white;
+                padding: 2%;
+            }
+            div:nth-child(2){
+                color: lightsalmon;
+            }
+        }
+        .right{
+            .title{
+                @include borderColor(lightseagreen);
+                color: white;
+            }
+            div{
+                @include borderColor(lightseagreen);
+                background-color: white;
+                padding: 2%;
+            }
+            div:nth-child(2){
+                color: lightseagreen;
+            }
+        }
+    }
+}
+
+// media Query 
+@mixin mediaQuery($breakPoint){
+    @media screen and (min-width: $breakPoint) {
+        @content
+    }
+}
+
+@include mediaQuery(768px){
+    .upper{
+        .nav{
+            ul{
+                list-style: none;
+                @include flexProp();
+                justify-content: flex-start;
+                li{
+                    // color: black;
+                    margin: 0.5%;
+                }
+            }
+            // padding: 3%;
+        }
+        .body{
+            @include flexProp();
+            background-color: rgb(228, 227, 227);
+            flex-direction: row;
+            align-items: center;
+            padding: 2%;
+            img{
+                width: 50%;
+            }
+            .left{
+                @extend img;
+            }
+        }
+    } 
+    .down{
+        padding: 2%;
+        .x{
+            @include flexProp();
+            flex-direction: row;
+            justify-content: space-around;
+            .left{
+                width: 45%;
+            }
+            .right{
+                width: 45%;
+            }
+        }
+    }
+}
+
+
